@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+   <meta charset="UTF-8">
+   <meta content="width=device-width, initial-scale=1.0" name="viewport">
+   <meta content="Место, Проект Яндекс Практикум" name="kaywoeds">
+   <meta content="Главная страница" name="description">
+   <meta content="Viktor Derbishin" name="author">
+   <link href="./pages/index.css" rel="stylesheet">
+   <title>Путешествие по России</title>
+</head>
+
+<body class="page">
+<header class="header">
+   <img alt="Проект Место Россияx" class="logo" src="./images/logo/logo.svg">
+</header>
+
+<main class="content">
+   <section class="account">
+      <img alt="Аватарка" class="account__avatar" src="./images/account/account_image.jpg">
+      <div class="account__info">
+         <div class="account__title">
+            <h1 class="account__name">Жак-Ив Кусто</h1>
+            <button class="account__edit-button" type="button"></button>
+         </div>
+         <p class="account__description">Исследователь океана</p>
+      </div>
+      <button class="account__add-button" type="button"></button>
+   </section>
+
+   <section class="elements">
+      <ul class="elements__items">
+         <li class="elements__item">
+            <img class="elements__photo" alt="Историческое здание" src="./images/elements/Карачаевск.jpg">
+            <div class="elements__description">
+               <h3 class="elements__title">Карачаевск</h3>
+               <button class="elements__like" onclick="this.className = (this.className === 'elements__like' ? 'active' : 'elements__like')" type="button"></button>
+            </div>
+         </li>
+         <li class="elements__item">
+            <img class="elements__photo" alt="Гора Кавказа Эльбрус" src="./images/elements/Эльбрус.jpg">
+            <div class="elements__description">
+               <h3 class="elements__title">Гора Эльбрус</h3>
+               <button class="elements__like" onclick="this.className = (this.className === 'elements__like' ? 'active' : 'elements__like')" type="button"></button>
+            </div>
+         </li>
+         <li class="elements__item">
+            <img class="elements__photo" alt="Гора в виде острия, среди холмов и леса" src="images/elements/Домбай.jpg">
+            <div class="elements__description">
+               <h3 class="elements__title">Домбай</h3>
+               <button class="elements__like" onclick="this.className = (this.className === 'elements__like' ? 'active' : 'elements__like')" type="button"></button>
+            </div>
+         </li>
+         <li class="elements__item">
+            <img class="elements__photo" alt="Гора Кавказа Эльбрус" src="./images/elements/Эльбрус.jpg">
+            <div class="elements__description">
+               <h3 class="elements__title">Эльбрус</h3>
+               <button class="elements__like" onclick="this.className = (this.className === 'elements__like' ? 'active' : 'elements__like')" type="button"></button>
+            </div>
+         </li>
+         <li class="elements__item">
+            <img class="elements__photo" alt="Гора в виде острия, среди холмов и леса" src="images/elements/Домбай.jpg">
+            <div class="elements__description">
+               <h3 class="elements__title">Домбай</h3>
+               <button class="elements__like" onclick="this.className = (this.className === 'elements__like' ? 'active' : 'elements__like')" type="button"></button>
+            </div>
+         </li>
+         <li class="elements__item">
+            <img class="elements__photo" alt="Историческое здание" src="./images/elements/Карачаевск.jpg">
+            <div class="elements__description">
+               <h3 class="elements__title">Карачево-Ч...</h3>
+               <button class="elements__like" onclick="this.className = (this.className === 'elements__like' ? 'active' : 'elements__like')" type="button"></button>
+            </div>
+         </li>
+      </ul>
+   </section>
+</main>
+
+<footer class="footer">
+   <p class="footer__copyright">&#169;2022 Mesto Russia</p>
+</footer>
+
+<div class="popup">
+   <div class="popup__container">
+      <h3 class="popup__title">Редактировать профиль</h3>
+      <form class="popup__form">
+         <input class="popup__field popup__field_name" name="username" type="text" value="Жак-Ив Кусто">
+         <input class="popup__field popup__field_description" name="description" type="text" value="Исследователь океана">
+         <button class="popup__save-button" type="submit">Сохранить</button>
+         <button class="popup__exit-button" type="button"></button>
+      </form>
+   </div>
+</div>
+
+<script src="scripts/index.js"></script>
+</body>
+</html>

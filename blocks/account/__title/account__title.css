@@ -1,0 +1,20 @@
+.account__title {
+  max-width: 500px;
+  display: flex;
+  flex-direction: row;
+  margin: 18px 0 0 30px;
+
+}
+
+@media (max-width: 1100px) {
+  .account__title {
+    max-width: 350px;
+  }
+}
+
+@media (max-width: 767px) {
+  .account__title {
+    margin: 15px auto 0;
+    max-width: 282px;
+  }
+}
