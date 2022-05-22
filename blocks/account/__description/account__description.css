@@ -6,6 +6,8 @@
     overflow: hidden;
     line-height: 1.2;
     font-weight: normal;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 @media (max-width: 1100px) {

@@ -1,5 +1,5 @@
 .popup__field {
-  height: 57px;
+  height: 40px;
   border: none;
   border-bottom: 1px solid #bcbcc4;
   background-color: transparent;
@@ -9,6 +9,8 @@
   font-weight: normal;
   color: black;
   overflow-y: scroll;
+  outline: 0;
+  margin: 0;
 }
 
 .popup__field:focus {

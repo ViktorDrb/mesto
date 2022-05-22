@@ -1,24 +1,36 @@
-let popup = document.querySelector('.popup');
-let accountEditButton = document.querySelector('.account__edit-button');
-let popupExitButton = popup.querySelector('.popup__exit-button');
-let formElement = document.querySelector('.popup__form');
-let popupFieldName = popup.querySelector('.popup__field_name');
-let popupFieldDescription = popup.querySelector('.popup__field_description');
-let accountName = document.querySelector('.account__name');
-let accountDescription = document.querySelector('.account__description');
+const popupElement = document.querySelector('.popup');
+const accountEditButtonElement = document.querySelector('.account__edit-button');
+const popupExitButtonElement = popupElement.querySelector('.popup__exit-button');
+const formElement = document.querySelector('.popup__container');
+const popupFieldNameElement = popupElement.querySelector('.popup__field_type_name');
+const popupFieldDescriptionElement = popupElement.querySelector('.popup__field_type_description');
+const accountNameElement = document.querySelector('.account__name');
+const accountDescriptionElement = document.querySelector('.account__description');
 
-let popupToggle = function() {
-  popup.classList.toggle('popup_opened');
+function popupToggle() {
+  popupElement.classList.toggle('popup_opened');
 }
 
-accountEditButton.addEventListener('click', popupToggle);
-popupExitButton.addEventListener('click', popupToggle);
+function handleOpenPopup() {
+  popupFieldNameElement.value =  accountNameElement.textContent;
+  popupFieldDescriptionElement.value = accountDescriptionElement.textContent;
+  popupToggle();
+}
 
-function formSubmitHandler (evt) {
+accountEditButtonElement.addEventListener('click', handleOpenPopup);
+popupExitButtonElement.addEventListener('click', popupToggle);
+
+function formSubmitHandler(evt) {
   evt.preventDefault();
-  accountName.textContent = popupFieldName.value;
-  accountDescription.textContent = popupFieldDescription.value;
+  accountNameElement.textContent = popupFieldNameElement.value;
+  accountDescriptionElement.textContent = popupFieldDescriptionElement.value;
   popupToggle();
 }
 
 formElement.addEventListener('submit', formSubmitHandler);
+
+document.querySelectorAll('.elements__like').forEach(item => {
+  item.addEventListener('click', () => {
+    item.classList.toggle('active');
+  });
+})
