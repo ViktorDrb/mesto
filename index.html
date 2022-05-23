@@ -81,13 +81,15 @@
 </footer>
 
 <div class="popup">
-   <form class="popup__container" name="form">
+   <div class="popup__container">
+      <button class="popup__exit-button" type="button"></button>
+   <form name="form">
       <h3 class="popup__title">Редактировать профиль</h3>
       <input class="popup__field popup__field_type_name" name="username" type="text">
       <input class="popup__field popup__field_type_description" name="description" type="text">
       <button class="popup__save-button" type="submit">Сохранить</button>
-      <button class="popup__exit-button" type="button"></button>
    </form>
+   </div>
 </div>
 
 <script src="scripts/index.js"></script>

@@ -29,8 +29,9 @@ function formSubmitHandler(evt) {
 
 formElement.addEventListener('submit', formSubmitHandler);
 
+/* Лайк замена класса
 document.querySelectorAll('.elements__like').forEach(item => {
   item.addEventListener('click', () => {
     item.classList.toggle('active');
   });
-})
+})*/
