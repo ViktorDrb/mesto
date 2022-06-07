@@ -21,6 +21,12 @@ const cardContainer = document.querySelector('.elements__items');
 const popupViewElement = document.querySelector('#popup-show-photo')
 const popupViewImageElement = popupViewElement.querySelector('.popup__image')
 const popupViewCaptionElement = popupViewElement.querySelector('.popup__caption')
+const popupExitViewButtonElement = popupViewElement.querySelector('#close-popup-photo');
+
+const closePhoto = function() {
+  popupViewElement.classList.remove('popup_opened');
+}
+popupExitViewButtonElement.addEventListener('click', closePhoto);
 
 
 function popupToggle(popup) {
@@ -64,6 +70,7 @@ function formSubmitHandlerCard(evt) {
 formElement.addEventListener('submit', formSubmitHandler);
 popupCardFormElement.addEventListener('submit', formSubmitHandlerCard);
 
+
 // { link: url, name: text }
 function createCard(card) {
   const cardTemplate = document.querySelector('#card').content;
@@ -73,6 +80,7 @@ function createCard(card) {
   cardElement.querySelector('.elements__title').textContent = card.name;
   imageElement.src = card.link;
   imageElement.alt = card.name;
+
 
   imageElement.addEventListener('click', function(evt) {
     popupViewImageElement.src = card.link
