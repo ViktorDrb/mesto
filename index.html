@@ -30,48 +30,6 @@
 
    <section class="elements">
       <ul class="elements__items">
-         <li class="elements__item">
-            <img class="elements__photo" alt="Историческое здание" src="./images/elements/Карачаевск.jpg">
-            <div class="elements__description">
-               <h3 class="elements__title">Карачаевск</h3>
-               <button class="elements__like" type="button"></button>
-            </div>
-         </li>
-         <li class="elements__item">
-            <img class="elements__photo" alt="Гора Кавказа Эльбрус" src="./images/elements/Эльбрус.jpg">
-            <div class="elements__description">
-               <h3 class="elements__title">Гора Эльбрус</h3>
-               <button class="elements__like" type="button"></button>
-            </div>
-         </li>
-         <li class="elements__item">
-            <img class="elements__photo" alt="Гора в виде острия, среди холмов и леса" src="images/elements/Домбай.jpg">
-            <div class="elements__description">
-               <h3 class="elements__title">Домбай</h3>
-               <button class="elements__like" type="button"></button>
-            </div>
-         </li>
-         <li class="elements__item">
-            <img class="elements__photo" alt="Гора Кавказа Эльбрус" src="./images/elements/Эльбрус.jpg">
-            <div class="elements__description">
-               <h3 class="elements__title">Эльбрус</h3>
-               <button class="elements__like" type="button"></button>
-            </div>
-         </li>
-         <li class="elements__item">
-            <img class="elements__photo" alt="Гора в виде острия, среди холмов и леса" src="images/elements/Домбай.jpg">
-            <div class="elements__description">
-               <h3 class="elements__title">Домбай</h3>
-               <button class="elements__like" type="button"></button>
-            </div>
-         </li>
-         <li class="elements__item">
-            <img class="elements__photo" alt="Историческое здание" src="./images/elements/Карачаевск.jpg">
-            <div class="elements__description">
-               <h3 class="elements__title">Карачево-Ч...</h3>
-               <button class="elements__like" type="button"></button>
-            </div>
-         </li>
       </ul>
    </section>
 </main>
@@ -80,18 +38,50 @@
    <p class="footer__copyright">&#169;2022 Mesto Russia</p>
 </footer>
 
-<div class="popup">
+<div class="popup" id="edit-profile">
    <div class="popup__container">
-      <button class="popup__exit-button" type="button"></button>
+   <button id="close-popup-profile" class="popup__exit-button" type="button"></button>
    <form name="form">
       <h3 class="popup__title">Редактировать профиль</h3>
-      <input class="popup__field popup__field_type_name" name="username" type="text">
-      <input class="popup__field popup__field_type_description" name="description" type="text">
+      <input class="popup__field" name="username" type="text">
+      <input class="popup__field" name="description" type="text">
       <button class="popup__save-button" type="submit">Сохранить</button>
    </form>
    </div>
 </div>
 
+<div class="popup" id="add-card">
+   <div class="popup__container">
+      <button id="close-popup-card" class="popup__exit-button" type="button"></button>
+      <form name="form">
+         <h3 class="popup__title">Новое место</h3>
+         <input placeholder="Название" class="popup__field" name="cardname" type="text">
+         <input placeholder="Сылка на картинку" class="popup__field" name="link" type="text">
+         <button class="popup__save-button" type="submit">Сохранить</button>
+      </form>
+   </div>
+</div>
+
+<template id="card">
+   <li class="elements__item">
+      <button class="elements__delete" type="button"></button>
+      <img class="elements__photo" alt="фото">
+      <div class="elements__description">
+         <h3 class="elements__title"></h3>
+         <button class="elements__like" type="button"></button>
+      </div>
+   </li>
+</template>
+
+<section class="popup" id="popup-show-photo">
+   <figure class="popup__figure">
+      <button id="close-popup-photo" class="popup__exit-button" type="button"></button>
+      <img class="popup__image" src="#" alt=""/>
+      <figcaption class="popup__caption"></figcaption>
+   </figure>
+</section>
+
+<script src="scripts/cards.js"></script>
 <script src="scripts/index.js"></script>
 </body>
 </html>
