@@ -5,7 +5,7 @@ const popupFieldDescriptionElement = popupProfileElement.querySelector('input[na
 const accountEditButtonElement = document.querySelector('.account__edit-button');
 const popupExitButtonElement = popupProfileElement.querySelector('#close-popup-profile');
 const addCardButtonElement = document.querySelector('.account__add-button');
-const formElement = document.querySelector('.popup__container');
+const popupFormContainerElement = document.querySelector('.popup__container');
 const accountNameElement = document.querySelector('.account__name');
 const accountDescriptionElement = document.querySelector('.account__description');
 
@@ -23,57 +23,55 @@ const popupViewImageElement = popupViewElement.querySelector('.popup__image')
 const popupViewCaptionElement = popupViewElement.querySelector('.popup__caption')
 const popupExitViewButtonElement = popupViewElement.querySelector('#close-popup-photo');
 
-const closePhoto = function() {
-  popupViewElement.classList.remove('popup_opened');
+function onOpenPopup(popup) {
+  popup.classList.add('popup_opened');
 }
-popupExitViewButtonElement.addEventListener('click', closePhoto);
 
-
-function popupToggle(popup) {
-  popup.classList.toggle('popup_opened');
+function onClosePopup(popup) {
+  popup.classList.remove('popup_opened');
 }
+
+popupExitViewButtonElement.addEventListener('click',
+    () => onClosePopup(popupViewElement));
 
 function handleOpenAccountPopup() {
   popupFieldNameElement.value =  accountNameElement.textContent;
   popupFieldDescriptionElement.value = accountDescriptionElement.textContent;
-  popupToggle(popupProfileElement);
-}
-
-function handleOpenAddCardPopup() {
-  popupToggle(popupCardElement);
+  onOpenPopup(popupProfileElement);
 }
 
 accountEditButtonElement.addEventListener('click', handleOpenAccountPopup);
-addCardButtonElement.addEventListener('click', handleOpenAddCardPopup);
-popupExitButtonElement.addEventListener('click', () => popupToggle(popupProfileElement));
-popupExitCardButtonElement.addEventListener('click', () => popupToggle(popupCardElement));
+addCardButtonElement.addEventListener('click', () => onOpenPopup(popupCardElement));
+popupExitButtonElement.addEventListener('click', () => onClosePopup(popupProfileElement));
+popupExitCardButtonElement.addEventListener('click', () => onClosePopup(popupCardElement));
 
 function formSubmitHandler(evt) {
   evt.preventDefault();
   accountNameElement.textContent = popupFieldNameElement.value;
   accountDescriptionElement.textContent = popupFieldDescriptionElement.value;
-  popupToggle(popupProfileElement);
+  onClosePopup(popupProfileElement);
 }
 
 function formSubmitHandlerCard(evt) {
   evt.preventDefault();
-  console.log()
   const card = {
     name: popupFieldCardNameElement.value,
     link: popupFieldCardUrlElement.value,
   }
   const cardElement = createCard(card)
-  cardContainer.append(cardElement)
-  popupToggle(popupCardElement);
+  cardContainer.prepend(cardElement);
+  onClosePopup(popupCardElement);
+  popupCardFormElement.reset();
 }
 
-formElement.addEventListener('submit', formSubmitHandler);
+
+popupFormContainerElement.addEventListener('submit', formSubmitHandler);
 popupCardFormElement.addEventListener('submit', formSubmitHandlerCard);
 
 
 // { link: url, name: text }
+const cardTemplate = document.querySelector('#card').content;
 function createCard(card) {
-  const cardTemplate = document.querySelector('#card').content;
   const cardElement = cardTemplate.querySelector('.elements__item').cloneNode(true);
 
   const imageElement = cardElement.querySelector('.elements__photo');
@@ -84,8 +82,9 @@ function createCard(card) {
 
   imageElement.addEventListener('click', function(evt) {
     popupViewImageElement.src = card.link
+    popupViewImageElement.alt = card.name
     popupViewCaptionElement.textContent = card.name
-    popupToggle(popupViewElement)
+    onOpenPopup(popupViewElement)
   });
 
   cardElement.querySelector('.elements__like').addEventListener('click', function(evt) {
