@@ -1,3 +1,12 @@
+const optionsForFormValidate = {
+  formSelector: 'form',
+  inputSelector: '.popup__field',
+  submitButtonSelector: 'button[type="submit"]',
+  inputErrorClass: 'popup__field_error',
+  errorClass: 'popup__error_visible',
+  buttonErrorClass: 'popup__save-button_disabled',
+}
+
 /* Author elements */
 const popupProfileElement = document.querySelector('#edit-profile');
 const popupFieldNameElement = popupProfileElement.querySelector('input[name="username"]');
@@ -24,29 +33,30 @@ const popupViewCaptionElement = popupViewElement.querySelector('.popup__caption'
 const popupExitViewButtonElement = popupViewElement.querySelector('#close-popup-photo');
 
 const handleEscPress = (evt) => {
-  console.log(evt)
   if (evt.key === 'Escape') {
     const popup = document.querySelector('.popup_opened');
-    console.log(popup)
     onClosePopup(popup);
   }
 };
 
-document.addEventListener("click", function(e) {
-  const clickToElement = e.target
-   if (clickToElement.classList.contains('popup_opened')) {
-     clickToElement.classList.remove('popup_opened');
+const handleCloseClickToPopup = (eve) => {
+  const clickToElement = eve.target
+  if (clickToElement.classList.contains('popup_opened')) {
+    onClosePopup(clickToElement)
   }
-});
+}
 
 function onOpenPopup(popup) {
+  resetForm(popup, optionsForFormValidate)
   popup.classList.add('popup_opened');
   document.addEventListener(`keydown`, handleEscPress);
+  popup.addEventListener('click', handleCloseClickToPopup);
 }
 
 function onClosePopup(popup) {
   popup.classList.remove('popup_opened');
   document.removeEventListener(`keydown`, handleEscPress);
+  popup.removeEventListener('click', handleCloseClickToPopup);
 }
 
 popupExitViewButtonElement.addEventListener('click',
@@ -59,7 +69,11 @@ function handleOpenAccountPopup() {
 }
 
 accountEditButtonElement.addEventListener('click', handleOpenAccountPopup);
-addCardButtonElement.addEventListener('click', () => onOpenPopup(popupCardElement));
+addCardButtonElement.addEventListener('click', () => {
+  popupFieldCardNameElement.value = ''
+  popupFieldCardUrlElement.value = ''
+  onOpenPopup(popupCardElement)
+});
 popupExitButtonElement.addEventListener('click', () => onClosePopup(popupProfileElement));
 popupExitCardButtonElement.addEventListener('click', () => onClosePopup(popupCardElement));
 
@@ -121,3 +135,5 @@ initialCards.forEach((card) => {
   const cardElement = createCard(card)
   cardContainer.append(cardElement)
 });
+
+enableValidation(optionsForFormValidate);

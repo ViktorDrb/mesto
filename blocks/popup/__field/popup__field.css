@@ -1,6 +1,6 @@
 .popup__field {
   height: 40px;
-  width: 358px;
+  width: 100%;
   border: none;
   border-bottom: 1px solid #bcbcc4;
   background-color: transparent;
@@ -16,10 +16,4 @@
 
 .popup__field:focus {
   outline-color: #bcbcc4;
-}
-
-@media (max-width: 320px) {
-  .popup__field {
-    width: 238px;
-  }
 }

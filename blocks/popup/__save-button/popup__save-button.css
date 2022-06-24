@@ -3,7 +3,7 @@
   height: 50px;
   background-color: black;
   color: white;
-  margin: 32px 0 0;
+  margin: 17px 0 0;
   border: none;
   border-radius: 2px;
 }
@@ -11,18 +11,6 @@
 .popup__save-button:hover {
   cursor: pointer;
   background-color: rgba(0, 0, 0, 0.8);
-}
-
-.popup__save-button:disabled {
-  color: black;
-  background-color: white;
-  border: 1px solid black;
-  box-sizing: border-box;
-  opacity: .2;
-}
-
-.popup__save-button:disabled:hover {
-  opacity: 0.2;
 }
 
 @media (max-width: 767px) {
