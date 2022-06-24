@@ -3,7 +3,7 @@
   height: 50px;
   background-color: black;
   color: white;
-  margin: 48px 0 0;
+  margin: 32px 0 0;
   border: none;
   border-radius: 2px;
 }
@@ -13,9 +13,21 @@
   background-color: rgba(0, 0, 0, 0.8);
 }
 
+.popup__save-button:disabled {
+  color: black;
+  background-color: white;
+  border: 1px solid black;
+  box-sizing: border-box;
+  opacity: .2;
+}
+
+.popup__save-button:disabled:hover {
+  opacity: 0.2;
+}
+
 @media (max-width: 767px) {
   .popup__save-button {
     font-size: 14px;
-    margin: 45px 0 0;
+    margin: 20px 0 0;
   }
 }

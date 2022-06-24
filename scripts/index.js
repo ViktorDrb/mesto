@@ -23,12 +23,30 @@ const popupViewImageElement = popupViewElement.querySelector('.popup__image')
 const popupViewCaptionElement = popupViewElement.querySelector('.popup__caption')
 const popupExitViewButtonElement = popupViewElement.querySelector('#close-popup-photo');
 
+const handleEscPress = (evt) => {
+  console.log(evt)
+  if (evt.key === 'Escape') {
+    const popup = document.querySelector('.popup_opened');
+    console.log(popup)
+    onClosePopup(popup);
+  }
+};
+
+document.addEventListener("click", function(e) {
+  const clickToElement = e.target
+   if (clickToElement.classList.contains('popup_opened')) {
+     clickToElement.classList.remove('popup_opened');
+  }
+});
+
 function onOpenPopup(popup) {
   popup.classList.add('popup_opened');
+  document.addEventListener(`keydown`, handleEscPress);
 }
 
 function onClosePopup(popup) {
   popup.classList.remove('popup_opened');
+  document.removeEventListener(`keydown`, handleEscPress);
 }
 
 popupExitViewButtonElement.addEventListener('click',
@@ -103,8 +121,3 @@ initialCards.forEach((card) => {
   const cardElement = createCard(card)
   cardContainer.append(cardElement)
 });
-
-
-//document.querySelector('.elements__like').addEventListener('click', function(evt) {
-  //evt.target.classList.toggle('element__like_active');
-//});
