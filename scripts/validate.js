@@ -1,9 +1,9 @@
-const invalidButton = (buttonElement, options) => {
+const setInvalidButton = (buttonElement, options) => {
     buttonElement.disabled = true
     buttonElement.classList.add(options.buttonErrorClass)
 }
 
-const validButton = (buttonElement, options) => {
+const setValidButton = (buttonElement, options) => {
     buttonElement.disabled = false
     buttonElement.classList.remove(options.buttonErrorClass)
 }
@@ -14,9 +14,9 @@ const hasValidInput = (inputList) => {
 
 const toggleButtonState = (inputList, buttonElement, options) => {
     if (hasValidInput(inputList)) {
-        validButton(buttonElement, options)
+        setValidButton(buttonElement, options)
     } else {
-        invalidButton(buttonElement, options)
+        setInvalidButton(buttonElement, options)
     }
 }
 

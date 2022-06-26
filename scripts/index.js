@@ -47,7 +47,6 @@ const handleCloseClickToPopup = (eve) => {
 }
 
 function onOpenPopup(popup) {
-  resetForm(popup, optionsForFormValidate)
   popup.classList.add('popup_opened');
   document.addEventListener(`keydown`, handleEscPress);
   popup.addEventListener('click', handleCloseClickToPopup);
@@ -65,15 +64,14 @@ popupExitViewButtonElement.addEventListener('click',
 function handleOpenAccountPopup() {
   popupFieldNameElement.value =  accountNameElement.textContent;
   popupFieldDescriptionElement.value = accountDescriptionElement.textContent;
+  resetForm(popupProfileElement, optionsForFormValidate)
   onOpenPopup(popupProfileElement);
 }
 
 accountEditButtonElement.addEventListener('click', handleOpenAccountPopup);
-addCardButtonElement.addEventListener('click', () => {
-  popupFieldCardNameElement.value = ''
-  popupFieldCardUrlElement.value = ''
-  onOpenPopup(popupCardElement)
-});
+
+addCardButtonElement.addEventListener('click', () => onOpenPopup(popupCardElement));
+
 popupExitButtonElement.addEventListener('click', () => onClosePopup(popupProfileElement));
 popupExitCardButtonElement.addEventListener('click', () => onClosePopup(popupCardElement));
 
@@ -94,6 +92,7 @@ function formSubmitHandlerCard(evt) {
   cardContainer.prepend(cardElement);
   onClosePopup(popupCardElement);
   popupCardFormElement.reset();
+  resetForm(popupCardElement, optionsForFormValidate)
 }
 
 
